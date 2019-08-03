@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 LIST=$(nmcli device wifi list)
 echo "$LIST"
-echo "SSID:"
-read SSID
-echo "Password, if none, hit Enter:"
-read PASS
+read -p "> SSID: " SSID
+read -sp "> Password, if none, hit Enter:" PASS
+echo -e "\nTrying to connect..."
+
 if [ -z "$PASS" ]
 then
 	nmcli device wifi connect "$SSID"
